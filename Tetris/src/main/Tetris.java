@@ -74,12 +74,15 @@ public class Tetris {
 	public String[][] move(String[][] screen, Movement move) {
 		String[][] newScreen = newScreen();
 		int actualDot = 0;
-		boolean validMove = false;
+		boolean validMove = true;		
+		int rowIndex = 0;
+		
 		System.out.println("");		
 		
-		for (int rowIndex = 0; rowIndex < screen.length; rowIndex++) {
+		while (rowIndex < screen.length && validMove) {
 			
-			for (int columnIndex = 0; columnIndex < screen[0].length; columnIndex++) {				
+			int columnIndex = 0;
+			while (columnIndex < screen[0].length && validMove) {				
 				String item = screen[rowIndex][columnIndex];				
 				
 				if (item.equals(BLACK)) {
@@ -112,7 +115,9 @@ public class Tetris {
 						newScreen = screen;
 					}
 				}
+				columnIndex++;
 			}
+			rowIndex++;
 		}
 		if (move.equals(Movement.ROTATE) && validMove) {
 			if (rotationState == 3) {
