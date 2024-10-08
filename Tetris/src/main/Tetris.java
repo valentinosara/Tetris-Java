@@ -69,6 +69,7 @@ public class Tetris {
 				break;
 			}
 		}
+		scanner.close();
 	}
 	
 	public String[][] move(String[][] screen, Movement move) {
